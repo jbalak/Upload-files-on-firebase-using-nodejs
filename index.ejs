@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <div class="container">
+        
+        <form action="">
+            <input type="file" name="file" id="fileButton">
+            <input type="submit" value="">
+        </form>
+        
+    </div>
+    
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBP1cViSWTRYMrxZhS-4_a5JE3z-V9vzZ8",
+    authDomain: "cafestore-b7ca8.firebaseapp.com",
+    databaseURL: "https://cafestore-b7ca8.firebaseio.com",
+    projectId: "cafestore-b7ca8",
+    storageBucket: "cafestore-b7ca8.appspot.com",
+    messagingSenderId: "395250564447"
+  };
+  firebase.initializeApp(config);
+    
+  //get element
+  var uploder = document.getElementById('uploader')
+  var fileButton = document.getElementById('fileButton')
+  
+
+fileButton.addEventListener('change', function(e){
+
+    //get file
+    var file = e.target.files[0] ;
+
+    //freate a storage ref
+    var storageRef = firebase.storage().ref('my_files/'+file.name);
+
+    //upload file
+    storageRef.put(file);
+
+})
+
+
+</script>
+</body>
+</html>
